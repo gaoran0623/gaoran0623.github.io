@@ -82,7 +82,7 @@
         };
 
         let controls = new dat.GUI({width: 200});
-        const dispFolder = gui.addFolder('Display');
+        const dispFolder = controls.addFolder('Display');
         const envBackgroundCtrl = dispFolder.add(this.state, 'background');
         envBackgroundCtrl.onChange(() => this.updateEnvironment());
         const wireframeCtrl = dispFolder.add(this.state, 'wireframe');
