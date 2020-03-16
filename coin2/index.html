@@ -52,12 +52,10 @@
 
     /* 渲染器 */
     function initRender() {
-
         renderer = new THREE.WebGLRenderer({antialias: true});
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setClearColor(0x0E3866);
         document.body.appendChild(renderer.domElement);
-
     }
 
     /* 灯光 */
@@ -84,6 +82,21 @@
         };
 
         let controls = new dat.GUI({width: 200});
+        const dispFolder = gui.addFolder('Display');
+        const envBackgroundCtrl = dispFolder.add(this.state, 'background');
+        envBackgroundCtrl.onChange(() => this.updateEnvironment());
+        const wireframeCtrl = dispFolder.add(this.state, 'wireframe');
+        wireframeCtrl.onChange(() => this.updateDisplay());
+        const skeletonCtrl = dispFolder.add(this.state, 'skeleton');
+        skeletonCtrl.onChange(() => this.updateDisplay());
+        const gridCtrl = dispFolder.add(this.state, 'grid');
+        gridCtrl.onChange(() => this.updateDisplay());
+        dispFolder.add(this.controls, 'autoRotate');
+        dispFolder.add(this.controls, 'screenSpacePanning');
+        const bgColor1Ctrl = dispFolder.addColor(this.state, 'bgColor1');
+        const bgColor2Ctrl = dispFolder.addColor(this.state, 'bgColor2');
+        bgColor1Ctrl.onChange(() => this.updateBackground());
+        bgColor2Ctrl.onChange(() => this.updateBackground());
 
     }
 
@@ -174,7 +187,20 @@
         console.log("three init send...");
     })();
 
-</script><div style="position: fixed; top: 0px; left: 0px; cursor: pointer; opacity: 0.9; z-index: 10000;"><canvas width="160" height="96" style="width: 80px; height: 48px; display: block;"></canvas><canvas width="160" height="96" style="width: 80px; height: 48px; display: none;"></canvas><canvas width="160" height="96" style="width: 80px; height: 48px; display: none;"></canvas></div><canvas width="694" height="590" style="width: 694px; height: 590px;"></canvas><div class="dg ac"><div class="dg main a" style="width: 200px;"><div style="width: 6px; margin-left: -3px; height: 0px; cursor: ew-resize; position: absolute;"></div><ul style="height: auto;"></ul><div class="close-button" style="width: 200px;">Close Controls</div></div></div>
+</script>
+<div style="position: fixed; top: 0px; left: 0px; cursor: pointer; opacity: 0.9; z-index: 10000;">
+    <canvas width="160" height="96" style="width: 80px; height: 48px; display: block;"></canvas>
+    <canvas width="160" height="96" style="width: 80px; height: 48px; display: none;"></canvas>
+    <canvas width="160" height="96" style="width: 80px; height: 48px; display: none;"></canvas>
+</div>
+    <canvas width="694" height="590" style="width: 694px; height: 590px;"></canvas>
+<div class="dg ac">
+<div class="dg main a" style="width: 200px;">
+<div style="width: 6px; margin-left: -3px; height: 0px; cursor: ew-resize; position: absolute;"></div>
+<ul style="height: auto;"></ul>
+<div class="close-button" style="width: 200px;">Close Controls</div>
+</div>
+</div>
 
 
 </body></html>
