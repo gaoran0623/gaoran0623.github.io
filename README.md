@@ -1,2 +1,2 @@
 
-my 3D model demo
+my 3D model demos
