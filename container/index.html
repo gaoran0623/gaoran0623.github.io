@@ -50,12 +50,16 @@
             
             
             // Add a camera to the scene and attach it to the canvas
-            var camera = new BABYLON.UniversalCamera("UniversalCamera", new BABYLON.Vector3(0,5,-20), scene);
+            //var camera = new BABYLON.UniversalCamera("UniversalCamera", new BABYLON.Vector3(0,5,-20), scene);
 
             // Targets the camera to a particular position. In this case the scene origin
-            camera.setTarget(BABYLON.Vector3.Zero());
+            //camera.setTarget(BABYLON.Vector3.Zero());
 
-
+            
+            var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 10, new BABYLON.Vector3(0, 0, 0), scene);
+            camera.setPosition(new BABYLON.Vector3(0, 5, -20));
+            
+            
             
             // Parameters: name, position, scene
             //var camera = new BABYLON.FlyCamera("FlyCamera", new BABYLON.Vector3(0, 5, -20), scene);
@@ -75,13 +79,13 @@
             camera.attachControl(canvas, true);
             
             
-            camera.applyGravity = true;
+            //camera.applyGravity = true;
             
             //摄像机碰撞范围
-            camera.ellipsoid = new BABYLON.Vector3(1, 1, 1); 
+            //camera.ellipsoid = new BABYLON.Vector3(1, 1, 1); 
             
             //摄像机碰撞检测
-            camera.checkCollisions = true;
+            //camera.checkCollisions = true;
             
             
 
