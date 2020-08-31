@@ -50,11 +50,11 @@
             
             
             // Add a camera to the scene and attach it to the canvas
-            /*var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI / 2, Math.PI / 2, 2, new BABYLON.Vector3(0,0,5), scene);
-                        */
+            var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI / 2, Math.PI / 2, 2, new BABYLON.Vector3(0,5,-20), scene);
+
             
             // Parameters: name, position, scene
-            var camera = new BABYLON.FlyCamera("FlyCamera", new BABYLON.Vector3(0, 5, -20), scene);
+            //var camera = new BABYLON.FlyCamera("FlyCamera", new BABYLON.Vector3(0, 5, -20), scene);
 
             // Airplane like rotation, with faster roll correction and banked-turns.
             // Default is 100. A higher number means slower correction.
