@@ -29,7 +29,7 @@
 
    <body>
 
-    <canvas id="renderCanvas" ></canvas> <!-- touch-action="none" for best results from PEP -->
+    <canvas id="renderCanvas" touch-action="none"></canvas> <!-- touch-action="none" for best results from PEP -->
 
     <script>
         var canvas = document.getElementById("renderCanvas"); // Get the canvas element
@@ -79,7 +79,31 @@
             //摄像机碰撞检测
             camera.checkCollisions = true;
             
-            
+            scene.onPointerObservable.add((pointerInfo) => {
+                switch (pointerInfo.type) {
+                    case BABYLON.PointerEventTypes.POINTERDOWN:
+                        console.log("POINTER DOWN");
+                        break;
+                    case BABYLON.PointerEventTypes.POINTERUP:
+                        console.log("POINTER UP");
+                        break;
+                    case BABYLON.PointerEventTypes.POINTERMOVE:
+                        console.log("POINTER MOVE");
+                        break;
+                    case BABYLON.PointerEventTypes.POINTERWHEEL:
+                        console.log("POINTER WHEEL");
+                        break;
+                    case BABYLON.PointerEventTypes.POINTERPICK:
+                        console.log("POINTER PICK");
+                        break;
+                    case BABYLON.PointerEventTypes.POINTERTAP:
+                        console.log("POINTER TAP");
+                        break;
+                    case BABYLON.PointerEventTypes.POINTERDOUBLETAP:
+                        console.log("POINTER DOUBLE-TAP");
+                        break;
+                }
+            });
             
 
             // Add lights to the scene
@@ -122,6 +146,7 @@
             plane.checkCollisions = true;
             
             
+            
             BABYLON.SceneLoader.ImportMesh("","./", "container.gltf", scene, function (newMeshes, particleSystems, skeletons) {
             // do something with the scene
               var container = newMeshes[0];
@@ -131,7 +156,7 @@
               container.checkCollisions = true;
             });
             
-            var envTexture = new BABYLON.CubeTexture("./image/skybox", scene);
+            var envTexture = new BABYLON.CubeTexture("/image/skybox", scene);
             scene.createDefaultSkybox(envTexture, true, 1000);
             
             return scene;
